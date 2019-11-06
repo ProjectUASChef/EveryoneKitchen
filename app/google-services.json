@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "205769693911",
+    "firebase_url": "https://everyonekitchen-78a15.firebaseio.com",
+    "project_id": "everyonekitchen-78a15",
+    "storage_bucket": "everyonekitchen-78a15.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:205769693911:android:e95169123fc0ec530f2e92",
+        "android_client_info": {
+          "package_name": "com.example.kitchen"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "205769693911-hje1or1v2notc7h101h6n21hgjueejrl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.kitchen",
+            "certificate_hash": "9130e4484d7385400922105c2a3082cf543d1373"
+          }
+        },
+        {
+          "client_id": "205769693911-pdnubpo54679qm6lo7bs25nv3v295siu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAl0YvKshUhPS9ct3aSfTh1C8Xcio1nzuc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "205769693911-pdnubpo54679qm6lo7bs25nv3v295siu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
