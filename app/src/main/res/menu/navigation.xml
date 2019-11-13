@@ -2,11 +2,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:id="@+id/action_breakfast"
         android:title="BreakFast"
-        android:icon="@drawable/bf" />
+        android:icon="@drawable/ic_breakfast" />
     <item android:id="@+id/action_lunch"
         android:title="Lunch"
-        android:icon="@drawable/lunch" />
+        android:icon="@drawable/ic_lunch" />
     <item android:id="@+id/action_dinner"
         android:title="Dinner"
-        android:icon="@drawable/dinner" />
+        android:icon="@drawable/ic_dinner" />
 </menu>
