@@ -25,7 +25,7 @@ public class LoginActivity extends AppCompatActivity {
     TextView register;
     FirebaseAuth fAuth;
     ProgressBar progressBar;
-    private String currentUserID;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,10 +38,7 @@ public class LoginActivity extends AppCompatActivity {
         fAuth = FirebaseAuth.getInstance();
         progressBar = findViewById(R.id.progressBar);
 
-        if(fAuth.getCurrentUser() != null){
-            startActivity(new Intent(getApplicationContext(), MainActivity.class));
-            finish();
-        }
+
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override

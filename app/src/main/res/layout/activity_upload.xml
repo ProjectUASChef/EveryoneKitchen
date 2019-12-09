@@ -4,24 +4,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#0C061EF1"
     tools:context=".UploadActivity">
+
 
     <ImageView
         android:id="@+id/gambar"
         android:layout_width="423dp"
         android:layout_height="157dp"
+        android:layout_marginTop="32dp"
+        android:background="#66FFFFFF"
         android:onClick="PilihGambar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@color/colorAccent" />
+        tools:srcCompat="@drawable/androidphoto" />
 
     <EditText
         android:id="@+id/judulresep"
         android:layout_width="298dp"
         android:layout_height="54dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="44dp"
-        android:layout_marginRight="44dp"
+        android:layout_marginTop="84dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginRight="40dp"
         android:ems="10"
         android:hint="Isi Judul Resep"
         android:inputType="textPersonName"
@@ -69,24 +73,14 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="120dp"
-        android:layout_marginEnd="120dp"
-        android:layout_marginRight="120dp"
-        android:text="Tambah foto Resepmu Disini"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/gambar" />
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="53dp"
-        android:layout_height="70dp"
-        android:layout_marginEnd="176dp"
-        android:layout_marginRight="176dp"
-        android:layout_marginBottom="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@android:drawable/ic_menu_camera" />
+        android:layout_width="177dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="112dp"
+        android:layout_marginLeft="112dp"
+        android:layout_marginTop="12dp"
+        android:text="Pilih Gambar Diatas"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gambar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

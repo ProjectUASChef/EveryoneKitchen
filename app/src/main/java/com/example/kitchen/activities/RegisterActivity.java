@@ -18,6 +18,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class RegisterActivity extends AppCompatActivity {
     EditText emailRegister, passwordRegister;
@@ -25,6 +27,7 @@ public class RegisterActivity extends AppCompatActivity {
     TextView login;
     FirebaseAuth fAuth;
     ProgressBar progressBar;
+    private DatabaseReference dbref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,10 +40,8 @@ public class RegisterActivity extends AppCompatActivity {
         fAuth = FirebaseAuth.getInstance();
         progressBar = findViewById(R.id.progressBar);
 
-        if (fAuth.getCurrentUser() != null) {
-            startActivity(new Intent(getApplicationContext(), MainActivity.class));
-            finish();
-        }
+        dbref = FirebaseDatabase.getInstance().getReference();
+
 
         register.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,7 +66,9 @@ public class RegisterActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            Toast.makeText(RegisterActivity.this, "Register Berhasil !", Toast.LENGTH_SHORT).show();
+                            String currentUserId = fAuth.getCurrentUser().getUid();
+                            dbref.child("Users").child(currentUserId).setValue("");
+                        Toast.makeText(RegisterActivity.this, "Register Berhasil !", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(getApplicationContext(), MainActivity.class));
                         } else {
                             Toast.makeText(RegisterActivity.this, "Error !" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
