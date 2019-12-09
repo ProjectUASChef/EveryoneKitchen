@@ -33,12 +33,12 @@ import java.util.List;
  * A simple {@link Fragment} subclass.
  */
 public class dinnerFragment extends Fragment {
+
     FloatingActionButton createResep;
     private RecyclerView dinnerList;
-
     private DatabaseReference dinnerReference;
-
     private List<MyModel> myModelList = new ArrayList<>();
+    private MyAdapter adapter;
 
 
 
@@ -58,23 +58,16 @@ public class dinnerFragment extends Fragment {
         dinnerList = view.findViewById(R.id.dinnerRV);
         dinnerReference = FirebaseDatabase.getInstance().getReference();
 
-        myModelList.add(new MyModel("Batu","Oseng Batu"));
-        myModelList.add(new MyModel("Kacang", "Kacang Rebus"));
 
         dinnerReference.child("Resep").child("Breakfast").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-                String name = dataSnapshot.getValue().toString();
-                if(name.equals("nama")) {
-                    MyModel myModel = new MyModel(name, "test");
+                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                    MyModel myModel = postSnapshot.getValue(MyModel.class);
                     myModelList.add(myModel);
                 }
-
-//                MyModel dinnerModel = new MyModel(aa, bb);
-//
-//                myModelList.add(dinnerModel);
-
+                adapter = new MyAdapter(myModelList);
+                dinnerList.setAdapter(adapter);
 
             }
 
