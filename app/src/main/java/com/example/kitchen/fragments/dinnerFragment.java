@@ -1,6 +1,7 @@
 package com.example.kitchen.fragments;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -11,22 +12,18 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.kitchen.R;
-import com.example.kitchen.my_adapter.DinnerAdapter;
-import com.example.kitchen.my_model.DinnerModel;
-import com.firebase.ui.database.FirebaseRecyclerAdapter;
-import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.example.kitchen.UploadActivity;
+import com.example.kitchen.my_adapter.MyAdapter;
+import com.example.kitchen.my_model.MyModel;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
-import org.json.JSONArray;
-import org.json.JSONException;
 
 
 import java.util.ArrayList;
@@ -36,12 +33,12 @@ import java.util.List;
  * A simple {@link Fragment} subclass.
  */
 public class dinnerFragment extends Fragment {
-
+    FloatingActionButton createResep;
     private RecyclerView dinnerList;
 
     private DatabaseReference dinnerReference;
 
-    private List<DinnerModel> dinnerModelList = new ArrayList<>();
+    private List<MyModel> myModelList = new ArrayList<>();
 
 
 
@@ -54,13 +51,15 @@ public class dinnerFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_dinner, container, false);
 
+
+        View view = inflater.inflate(R.layout.fragment_dinner, container, false);
+        createResep = view.findViewById(R.id.floatingActionButton);
         dinnerList = view.findViewById(R.id.dinnerRV);
         dinnerReference = FirebaseDatabase.getInstance().getReference();
 
-        dinnerModelList.add(new DinnerModel("Batu","Oseng Batu"));
-        dinnerModelList.add(new DinnerModel("Kacang", "Kacang Rebus"));
+        myModelList.add(new MyModel("Batu","Oseng Batu"));
+        myModelList.add(new MyModel("Kacang", "Kacang Rebus"));
 
         dinnerReference.child("Resep").child("Breakfast").addValueEventListener(new ValueEventListener() {
             @Override
@@ -68,13 +67,13 @@ public class dinnerFragment extends Fragment {
 
                 String name = dataSnapshot.getValue().toString();
                 if(name.equals("nama")) {
-                    DinnerModel dinnerModel = new DinnerModel(name, "test");
-                    dinnerModelList.add(dinnerModel);
+                    MyModel myModel = new MyModel(name, "test");
+                    myModelList.add(myModel);
                 }
 
-//                DinnerModel dinnerModel = new DinnerModel(aa, bb);
+//                MyModel dinnerModel = new MyModel(aa, bb);
 //
-//                dinnerModelList.add(dinnerModel);
+//                myModelList.add(dinnerModel);
 
 
             }
@@ -85,13 +84,21 @@ public class dinnerFragment extends Fragment {
             }
         });
 
-        DinnerAdapter adapter = new DinnerAdapter(dinnerModelList);
+        MyAdapter adapter = new MyAdapter(myModelList);
         dinnerList.setAdapter(adapter);
         dinnerList.setLayoutManager(new LinearLayoutManager(getContext()));
 
+        createResep.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(),UploadActivity.class));
+            }
+        });
 
         return view;
 
     }
+
+
 
 }
