@@ -5,40 +5,40 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#0C061EF1"
-    tools:context=".UploadActivity">
+    tools:context=".activities.UploadActivity">
 
 
     <ImageView
         android:id="@+id/gambar"
-        android:layout_width="423dp"
-        android:layout_height="157dp"
-        android:layout_marginTop="32dp"
-        android:background="#66FFFFFF"
+        android:layout_width="238dp"
+        android:layout_height="147dp"
+        android:layout_marginEnd="84dp"
+        android:layout_marginRight="84dp"
         android:onClick="PilihGambar"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@drawable/androidphoto" />
 
     <EditText
         android:id="@+id/judulresep"
         android:layout_width="298dp"
-        android:layout_height="54dp"
-        android:layout_marginTop="84dp"
-        android:layout_marginEnd="40dp"
-        android:layout_marginRight="40dp"
+        android:layout_height="71dp"
+        android:layout_marginTop="208dp"
+        android:layout_marginEnd="52dp"
+        android:layout_marginRight="52dp"
         android:ems="10"
         android:hint="Isi Judul Resep"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/gambar" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/bahantext"
         android:layout_width="297dp"
-        android:layout_height="101dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="44dp"
-        android:layout_marginRight="44dp"
+        android:layout_height="71dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="56dp"
+        android:layout_marginRight="56dp"
         android:ems="10"
         android:gravity="start"
         android:hint="Isi bahan-bahan"
@@ -48,39 +48,40 @@
 
     <EditText
         android:id="@+id/langkah"
-        android:layout_width="294dp"
-        android:layout_height="75dp"
-        android:layout_marginTop="12dp"
+        android:layout_width="296dp"
+        android:layout_height="71dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="56dp"
+        android:layout_marginRight="56dp"
         android:ems="10"
         android:gravity="start"
         android:hint="Isi Langkah-Langkah"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.598"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bahantext" />
 
     <Button
         android:id="@+id/addresep"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
         android:layout_marginEnd="160dp"
         android:layout_marginRight="160dp"
         android:text="Upload"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.932"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/langkah" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="177dp"
         android:layout_height="35dp"
-        android:layout_marginStart="112dp"
-        android:layout_marginLeft="112dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="160dp"
+        android:layout_marginEnd="116dp"
+        android:layout_marginRight="116dp"
         android:text="Pilih Gambar Diatas"
         android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/gambar" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

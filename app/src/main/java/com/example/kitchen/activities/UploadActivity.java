@@ -1,4 +1,4 @@
-package com.example.kitchen;
+package com.example.kitchen.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,7 +13,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 
+import com.example.kitchen.R;
 import com.example.kitchen.my_model.MyModel;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -30,7 +32,6 @@ public class UploadActivity extends AppCompatActivity {
     private EditText judul, bahan, langkah;
     private DatabaseReference db;
 
-    private List<MyModel> myModelList = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,22 +41,15 @@ public class UploadActivity extends AppCompatActivity {
         langkah = findViewById(R.id.langkah);
         btupload = findViewById(R.id.addresep);
 
+
         db = FirebaseDatabase.getInstance().getReference();
-
-        db.addValueEventListener(new ValueEventListener() {
+        btupload.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                myModelList.clear();
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
+            public void onClick(View view) {
 
             }
         });
 
-        
     }
 
     public void PilihGambar(View view) {

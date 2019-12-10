@@ -15,7 +15,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.kitchen.R;
-import com.example.kitchen.UploadActivity;
+import com.example.kitchen.activities.UploadActivity;
 import com.example.kitchen.my_adapter.MyAdapter;
 import com.example.kitchen.my_model.MyModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;

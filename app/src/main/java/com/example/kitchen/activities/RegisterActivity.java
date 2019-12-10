@@ -14,10 +14,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.kitchen.R;
+import com.example.kitchen.my_model.LoginModel;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.internal.FederatedSignInActivity;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -39,41 +42,45 @@ public class RegisterActivity extends AppCompatActivity {
         login = findViewById(R.id.login);
         fAuth = FirebaseAuth.getInstance();
         progressBar = findViewById(R.id.progressBar);
-
         dbref = FirebaseDatabase.getInstance().getReference();
 
 
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String email = emailRegister.getText().toString().trim();
-                String pass = passwordRegister.getText().toString().trim();
+                final String email = emailRegister.getText().toString().trim();
+                final String password = passwordRegister.getText().toString().trim();
 
                 if (TextUtils.isEmpty(email)) {
                     emailRegister.setError("Email Belum Terisi !");
                     return;
                 }
-                if (TextUtils.isEmpty(pass)) {
+                if (TextUtils.isEmpty(password)) {
                     passwordRegister.setError("Password Belum Terisi !");
                     return;
                 }
-                if (pass.length() < 6) {
+                if (password.length() < 6) {
                     passwordRegister.setError(("Password Minimal Berisikan 6 Karakter !"));
                 }
                 progressBar.setVisibility(View.VISIBLE);
 
-                fAuth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                fAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            String currentUserId = fAuth.getCurrentUser().getUid();
-                            dbref.child("Users").child(currentUserId).setValue("");
-                        Toast.makeText(RegisterActivity.this, "Register Berhasil !", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                            addData(new LoginModel(email,password));
+                            Intent intent = new Intent(RegisterActivity.this,LoginActivity.class);
                         } else {
-                            Toast.makeText(RegisterActivity.this, "Error !" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                            progressBar.setVisibility(View.GONE);
+                            Toast.makeText(RegisterActivity.this,"Gagal Register"+task.getException().getMessage(), Toast.LENGTH_LONG).show();
                         }
+                    }
+                });
+            }
+            private void addData(LoginModel register){
+                dbref.child("Users").push().setValue(register).addOnSuccessListener(RegisterActivity.this, new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Toast.makeText(RegisterActivity.this, "Berhasil Register", Toast.LENGTH_SHORT).show();
                     }
                 });
             }
