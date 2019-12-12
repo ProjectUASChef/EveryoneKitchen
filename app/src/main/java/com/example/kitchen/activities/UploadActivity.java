@@ -12,9 +12,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.example.kitchen.R;
 import com.example.kitchen.my_model.MyModel;
+import com.example.kitchen.my_model.UploadModel;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -29,8 +33,10 @@ import java.util.List;
 public class UploadActivity extends AppCompatActivity {
     private int PICK_IMAGE_REQUEST = 1;
     private Button btupload;
+    private ImageView gambar;
     private EditText judul, bahan, langkah;
-    private DatabaseReference db;
+    private DatabaseReference dbref;
+    private Spinner spinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,18 +46,43 @@ public class UploadActivity extends AppCompatActivity {
         bahan = findViewById(R.id.bahantext);
         langkah = findViewById(R.id.langkah);
         btupload = findViewById(R.id.addresep);
+        gambar = findViewById(R.id.gambar);
+        spinner = findViewById(R.id.spinner);
 
-
-        db = FirebaseDatabase.getInstance().getReference();
+        dbref = FirebaseDatabase.getInstance().getReference();
         btupload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                final String judulresep = judul.getText().toString().trim();
+//                final String gambarresep = gambar.
+                final String bahanresep = bahan.getText().toString().trim();
+                final String langkahresep = langkah.getText().toString().trim();
+                final String lock = spinner.getSelectedItem().toString();
 
+                if (judulresep.isEmpty()){
+                    judul.setError("Masukkan Judul Resep");
+                }
+                else if (bahanresep.isEmpty()){
+                    bahan.setError("Masukkan Bahan-bahan resep Anda");
+                }
+                else if (langkahresep.isEmpty()){
+                    langkah.setError("Masukkan Langkah-langkah Pembuatan Anda !");
+                }
+                else{
+                    addData(new UploadModel(judulresep, langkahresep, bahanresep, lock));
+                }
+            }
+
+        });
+    }
+    public void addData(final UploadModel upload){
+        dbref.child("Resep").child(upload.getKunci()).push().setValue(upload).addOnSuccessListener(UploadActivity.this, new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                Toast.makeText(UploadActivity.this, "Resep Berhasil Ditambahkan", Toast.LENGTH_SHORT).show();
             }
         });
-
     }
-
     public void PilihGambar(View view) {
         Intent intent = new Intent();
         intent.setType("image/*");
