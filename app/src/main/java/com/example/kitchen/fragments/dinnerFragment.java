@@ -89,9 +89,5 @@ public class dinnerFragment extends Fragment {
         });
 
         return view;
-
     }
-
-
-
 }

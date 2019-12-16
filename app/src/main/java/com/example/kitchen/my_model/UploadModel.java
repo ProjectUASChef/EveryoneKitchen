@@ -1,29 +1,22 @@
 package com.example.kitchen.my_model;
 
-public class UploadModel {
-    String gambar,judul, langkah, bahan, kunci;
+import android.net.Uri;
 
-    public UploadModel(String gambar, String judul, String langkah, String bahan, String kunci) {
+import com.google.android.gms.tasks.Task;
+
+public class UploadModel {
+    String gambar, judul, langkah, bahan, spinner;
+
+//    public UploadModel(Task<Uri> downloadUrl, String trim, String langkah, String bahan, String spinner) {
+//
+//    }
+
+    public UploadModel(String gambar, String judul, String langkah, String bahan, String spinner) {
         this.gambar = gambar;
         this.judul = judul;
         this.langkah = langkah;
         this.bahan = bahan;
-        this.kunci = kunci;
-    }
-
-    public UploadModel(String judul, String langkah, String bahan, String kunci) {
-        this.judul = judul;
-        this.langkah = langkah;
-        this.bahan = bahan;
-        this.kunci = kunci;
-    }
-
-    public String getKunci() {
-        return kunci;
-    }
-
-    public void setKunci(String kunci) {
-        this.kunci = kunci;
+        this.spinner = spinner;
     }
 
     public String getGambar() {
@@ -56,5 +49,13 @@ public class UploadModel {
 
     public void setBahan(String bahan) {
         this.bahan = bahan;
+    }
+
+    public String getKunci() {
+        return spinner;
+    }
+
+    public void setKunci(String kunci) {
+        this.spinner = kunci;
     }
 }

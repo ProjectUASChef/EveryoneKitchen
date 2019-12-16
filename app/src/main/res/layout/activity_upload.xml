@@ -5,54 +5,49 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#0C061EF1"
+    android:padding="20dp"
     tools:context=".activities.UploadActivity">
 
 
     <ImageView
         android:id="@+id/gambar"
-        android:layout_width="238dp"
-        android:layout_height="147dp"
-        android:layout_marginEnd="84dp"
-        android:layout_marginRight="84dp"
+        android:layout_width="match_parent"
+        android:layout_height="101dp"
         android:onClick="PilihGambar"
+        app:layout_constraintBottom_toTopOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@drawable/androidphoto" />
 
     <EditText
         android:id="@+id/judulresep"
-        android:layout_width="298dp"
+        android:layout_width="match_parent"
         android:layout_height="71dp"
-        android:layout_marginTop="208dp"
-        android:layout_marginEnd="52dp"
-        android:layout_marginRight="52dp"
         android:ems="10"
         android:hint="Isi Judul Resep"
         android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/bahantext"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <EditText
         android:id="@+id/bahantext"
-        android:layout_width="297dp"
-        android:layout_height="71dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="56dp"
-        android:layout_marginRight="56dp"
+        android:layout_width="371dp"
+        android:layout_height="116dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginRight="4dp"
         android:ems="10"
         android:gravity="start"
         android:hint="Isi bahan-bahan"
-        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/judulresep" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.499" />
 
     <EditText
         android:id="@+id/langkah"
-        android:layout_width="296dp"
-        android:layout_height="71dp"
+        android:layout_width="378dp"
+        android:layout_height="111dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="56dp"
-        android:layout_marginRight="56dp"
         android:ems="10"
         android:gravity="start"
         android:hint="Isi Langkah-Langkah"
@@ -62,12 +57,10 @@
 
     <Button
         android:id="@+id/addresep"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="160dp"
-        android:layout_marginRight="160dp"
         android:text="Upload"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.987"
         app:layout_constraintStart_toStartOf="parent"
@@ -75,26 +68,22 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="177dp"
+        android:layout_width="match_parent"
         android:layout_height="35dp"
-        android:layout_marginTop="160dp"
-        android:layout_marginEnd="116dp"
-        android:layout_marginRight="116dp"
         android:text="Pilih Gambar Diatas"
         android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/judulresep"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <Spinner
         android:id="@+id/spinner"
-        android:layout_width="296dp"
+        android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="12dp"
+        android:entries="@array/spinner"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/langkah"
-        android:entries="@array/spinner"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/langkah" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
