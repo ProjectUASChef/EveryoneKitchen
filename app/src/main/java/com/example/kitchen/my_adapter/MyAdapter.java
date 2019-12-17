@@ -12,14 +12,15 @@ import java.util.List;
 
 public class MyAdapter extends BaseQuickAdapter<MyModel, BaseViewHolder> {
     public MyAdapter(@Nullable List<MyModel> data) {
-        super(R.layout.model_menu, data);
+        super(R.layout.menu_model, data);
 
     }
 
     @Override
     protected void convert(@NonNull BaseViewHolder helper, MyModel item) {
-        helper.setText(R.id.title, item.getBahan());
-        helper.setText(R.id.deskripsi, item.getNama());
+        helper.setText(R.id.title, item.getBahan())
+                .setText(R.id.deskripsi, item.getNama())
+                .addOnClickListener(R.id.CardView);
 
 
     }

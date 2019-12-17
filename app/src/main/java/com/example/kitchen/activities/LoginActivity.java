@@ -57,7 +57,7 @@ public class LoginActivity extends AppCompatActivity {
                 if(pass.length() < 6){
                     passwordLogin.setError(("Password Minimal Berisikan 6 Karakter !"));
                 }
-                progressBar.setVisibility(View.VISIBLE);
+                progressBar.setVisibility(View.GONE);
 
                 fAuth.signInWithEmailAndPassword(email,pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override

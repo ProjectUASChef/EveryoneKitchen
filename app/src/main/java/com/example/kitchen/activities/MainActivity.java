@@ -15,6 +15,7 @@ import com.example.kitchen.R;
 import com.example.kitchen.fragments.breakfastFragment;
 import com.example.kitchen.fragments.dinnerFragment;
 import com.example.kitchen.fragments.lunchFragment;
+import com.example.kitchen.my_adapter.MyAdapter;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 

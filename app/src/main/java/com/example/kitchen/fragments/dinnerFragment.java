@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,6 +15,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.chad.library.adapter.base.listener.OnItemChildClickListener;
 import com.example.kitchen.R;
 import com.example.kitchen.activities.UploadActivity;
 import com.example.kitchen.my_adapter.MyAdapter;
@@ -81,12 +84,21 @@ public class dinnerFragment extends Fragment {
         dinnerList.setAdapter(adapter);
         dinnerList.setLayoutManager(new LinearLayoutManager(getContext()));
 
+
+
         createResep.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getActivity(),UploadActivity.class));
             }
         });
+
+       dinnerList.addOnItemTouchListener(new OnItemChildClickListener() {
+           @Override
+           public void onSimpleItemChildClick(BaseQuickAdapter adapter, View view, int position) {
+               Toast.makeText(getContext(), "Posisi" + Integer.toString(position), Toast.LENGTH_SHORT).show();
+           }
+       });
 
         return view;
     }

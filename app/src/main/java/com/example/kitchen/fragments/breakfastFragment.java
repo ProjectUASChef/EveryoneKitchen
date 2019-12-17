@@ -23,7 +23,6 @@ import java.util.List;
 public class breakfastFragment extends Fragment {
     private RecyclerView breakfastlist;
     private DatabaseReference breakfastreference;
-
     private List<MyModel> myModelList = new ArrayList<>();
 
     public breakfastFragment() {
