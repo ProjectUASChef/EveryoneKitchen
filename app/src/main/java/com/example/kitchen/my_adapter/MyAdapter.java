@@ -10,7 +10,7 @@ import com.example.kitchen.my_model.MyModel;
 
 import java.util.List;
 
-public class MyAdapter extends BaseQuickAdapter<MyModel, BaseViewHolder> {
+public class MyAdapter extends BaseQuickAdapter<MyModel, BaseViewHolder>{
     public MyAdapter(@Nullable List<MyModel> data) {
         super(R.layout.menu_model, data);
 

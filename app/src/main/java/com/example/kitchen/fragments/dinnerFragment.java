@@ -18,6 +18,7 @@ import android.widget.Toast;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.listener.OnItemChildClickListener;
 import com.example.kitchen.R;
+import com.example.kitchen.activities.DetailActivity;
 import com.example.kitchen.activities.UploadActivity;
 import com.example.kitchen.my_adapter.MyAdapter;
 import com.example.kitchen.my_model.MyModel;
@@ -97,6 +98,7 @@ public class dinnerFragment extends Fragment {
            @Override
            public void onSimpleItemChildClick(BaseQuickAdapter adapter, View view, int position) {
                Toast.makeText(getContext(), "Posisi" + Integer.toString(position), Toast.LENGTH_SHORT).show();
+               startActivity(new Intent(getActivity(), DetailActivity.class));
            }
        });
 
