@@ -63,7 +63,7 @@ public class dinnerFragment extends Fragment {
         dinnerReference = FirebaseDatabase.getInstance().getReference();
 
 
-        dinnerReference.child("Resep").child("Breakfast").addValueEventListener(new ValueEventListener() {
+        dinnerReference.child("Resep").child("Dinner").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {

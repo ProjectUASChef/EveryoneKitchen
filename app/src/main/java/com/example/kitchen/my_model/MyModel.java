@@ -2,7 +2,7 @@ package com.example.kitchen.my_model;
 
 public class MyModel {
 
-    public String bahan,nama, gambar;
+    public String bahan,judul, gambar,langkah;
 
     public String getBahan()
     {
@@ -22,20 +22,29 @@ public class MyModel {
         this.bahan = bahan;
     }
 
-    public String getNama()
+    public String getJudul()
     {
-        return nama;
+        return judul;
     }
 
-    public void setNama(String nama)
+    public void setJudul(String judul)
     {
-        this.nama = nama;
+        this.judul = judul;
+    }
+
+    public String getLangkah() {
+        return langkah;
+    }
+
+    public void setLangkah(String langkah) {
+        this.langkah = langkah;
     }
 
     public MyModel(String bahan, String nama) {
         this.bahan = bahan;
-        this.nama = nama;
+        this.judul = nama;
         this.gambar = gambar;
+        this.langkah = langkah;
     }
 
 

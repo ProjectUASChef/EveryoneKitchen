@@ -3,24 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/menu_model"
     android:layout_width="match_parent"
-    android:layout_height="350dp"
+    android:layout_height="880dp"
     android:orientation="vertical"
     android:padding="10dp">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/CardView"
-        android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_width="390dp"
+        android:layout_height="860dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="8dp"
         android:clickable="true"
         app:cardCornerRadius="20dp">
-
-        <TextView
-            android:id="@+id/deskripsi"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
-            android:paddingLeft="5dp"
-            android:text="TextView" />
 
         <TextView
             android:id="@+id/title"
@@ -29,6 +24,31 @@
             android:paddingTop="10dp"
             android:text="TextView"
             android:textAlignment="center" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="128dp"
+            android:layout_height="129dp"
+            android:layout_marginLeft="135dp"
+            android:layout_marginTop="35dp"
+            app:srcCompat="@drawable/bf" />
+
+        <TextView
+            android:id="@+id/bahan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="170dp"
+            android:paddingLeft="5dp"
+            android:text="TextView" />
+
+        <TextView
+            android:id="@+id/langkah"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="480dp"
+            android:paddingLeft="5dp"
+            android:text="TextView" />
+
     </androidx.cardview.widget.CardView>
 
 </RelativeLayout>
